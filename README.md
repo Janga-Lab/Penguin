@@ -1,7 +1,7 @@
 # Penguin
 Penguin: A Tool for Predicting Pseudouridine Sites in Direct RNA Nanopore Sequencing Data
 
-#Getting Started and pre-requisites
+# Getting Started and pre-requisites
 The following softwares and modules should be installed before using Penguin
 
 python 3.6.10
@@ -21,7 +21,7 @@ tensorflow 2.0.0
 keras 2.3.1 (using Tensorflow backend)
 
 
-#Running Penguin:
+# Running Penguin:
 
 In order to run Penguin, the user has do the following:
 
@@ -35,5 +35,5 @@ Where the penguin tool needs the following two inputs files when running it:
 - A reference Genome file (ref.fa)
 - The fastq reads file (reads.fastq)
 
-#Note:
+# Note:
 The user should enter the bed file name with the absolute path and extension 
