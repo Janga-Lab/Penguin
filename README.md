@@ -7,7 +7,9 @@ The following softwares and modules should be installed before using Penguin
 python 3.6.10
 
 minimpa2 (https://github.com/lh3/minimap2)
+
 Nanopolish (https://github.com/jts/nanopolish)
+
 samtools (http://www.htslib.org/)
 
 numpy 1.18.1
