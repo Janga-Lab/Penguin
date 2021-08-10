@@ -29,7 +29,7 @@ fastq_reads = args.fastq_input
 f = open("hek.sam", "w")
 f1 = open("hek.bam", "w")
 f3 = open("hek-reads-ref.eventalign.txt", "w")
-f4 = open("Pseu_Modification_coors_ns_hek.txt", "w") #coordinate file
+#f4 = open("Pseu_Modification_coors_ns_hek.txt", "w") #coordinate file
 ####subprocess.run(["minimap2", "-ax", "map-ont", "--split-prefix", "/tmp/temp_name", "ref.fa", "reads.fastq"], stdout=f)    #minimap2 -ax map-ont --split-prefix /tmp/temp_name  ref.fa  reads.fastq > hek.sam
 subprocess.run(["minimap2", "-ax", "map-ont", "--split-prefix", "/tmp/temp_name", ref, fastq_reads], stdout=f) 
 subprocess.run(["nanopolish" ,"index", "-d", "fast5_files/", "reads.fastq"])   #nanopolish index -d fast5_files/ reads.fastq 
