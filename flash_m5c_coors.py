@@ -42,26 +42,23 @@ def cigar_parse(cigar,start):
     return aligns, gstop
 
 
-#asd=cigar_parse("61S4M2D6M3D10M1D10M1D18M1I14M1D28M2D8M1I15M1I4M1D15M2D15M2I20M3I6M1I2M1D6M1I2M1D1M1D7M1I8M3008N1M1D9M1I9M1D23M2D45M1D1M1D30M4919N17M7I9M1D6M1D14M2D6M1I8M1I2M1I16M1I7M1I13M1D5M1D2M2I3M2D11M1I2M2D8M1I1M1I10M1I2M1I14M1217N3M3D25M1D2M4D1M1D5M1D7M1D2M1D37M1I7M3D6M1D1M4D2M2D19M1D15M1467N2M1D2M2D4M2D2M1D37M1D5M2D3M1I19M1I3M1I2M1D10M1I16M1D3M2I2M1S",1)
-#print asd
-#locs=open('A_to_I_hg38_positions_BED6.txt','r') #### input uniq coordinate file
-#locs=open('m5C_hg38_BED_6.bed.txt','r') #### input uniq coordinate file
-filename = input("Input the bed Filename: ") 
-locs=open(filename,'r')
-#locs=open('PseudoU_hg38_BED_6.bed.txt','r')
+filename = input("Input the bed filename with its extension:") 
+if filename: 
+    locs=open(filename,'r')
+else:
+    print('Empty Bed file name')
+
 sam_file=[]
+'''
+file3=open('hek.sam','r') #### Provide input sam file
+for u in file3:
+    u1=u.split("\t")
+    if len(u1) > 3:
+        sam_file.append(u1[0]+' '+u1[1]+' '+u1[2]+' '+u1[3]+' '+u1[4]+' '+u1[5]+' '+u1[6])
 
-#open file only using its extension: https://stackoverflow.com/questions/40452536/how-to-open-a-file-only-using-its-extension
-
-from pathlib import Path
-
-path = "."  # current directory
-extension = ".sam"
-
-file_with_extension = next(Path().glob(f"*{extension}")) 
-
-#file3=open('hek.sam','r') #### Provide input sam file
-file3=str(file_with_extension) # to address the error at:https://stackoverflow.com/questions/57024338/typeerror-argument-of-type-posixpath-is-not-iterable
+'''
+file3=open('hek.sam','r') #### Provide input sam file
+#file3=open('Hela_align_1.sam','r') #### Provide input sam file
 for u in file3:
     #print(u)
     u1=u.split( )
@@ -70,6 +67,7 @@ for u in file3:
         sam_file.append(u1[0]+' '+u1[1]+' '+u1[2]+' '+u1[3]+' '+u1[4]+' '+u1[5]+' '+u1[6] )
 
 total=len(sam_file)
+print(total)
 print("Sam file read successfully..starting coordinate extraction...")
 
 mod_d=dict()
@@ -96,7 +94,7 @@ for key, value in mod_d.items() :
     # print('\n')
     dict_len=dict_len+len(value)
     
-print(dict_len)
+#print(dict_len)
 file2=open('Ps_Modification_coors_hek_complete.txt','a') ### define output filename
 c=0
 ### loop through samfile ####
@@ -104,14 +102,15 @@ for t, i in enumerate(sam_file):
     if not i.startswith('@'):
         i1=i.split()
         s_chr=''.join(i1[2])
+        #print(s_chr)
         s_chr_s=''.join(i1[3])
     #  print(i1[0]+' '+i1[3]+' '+i1[5])   
         coordinates,gstop=cigar_parse(i1[5],int(i1[3]))
         #print(i1[5])
         # if 'chr'+i1[2] == e1[0]:
-        # print(coordinates)    
+        #print(coordinates)    
         # print ("chr"+i1[2]+' '+i1[3])
-        # print(mod_d[s_chr])
+        #print(mod_d[s_chr])  #problem here what this should return?
         try:
             for v in mod_d[s_chr]:
                 # print(v)
@@ -138,4 +137,4 @@ for t, i in enumerate(sam_file):
                     # file2.write(i+'\n')   
                     # print(e1[1]+' '+str(i1[3]))
     c=c+1
-    #print(c ,total)
+   
