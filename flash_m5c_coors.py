@@ -49,16 +49,8 @@ else:
     print('Empty Bed file name')
 
 sam_file=[]
-'''
-file3=open('hek.sam','r') #### Provide input sam file
-for u in file3:
-    u1=u.split("\t")
-    if len(u1) > 3:
-        sam_file.append(u1[0]+' '+u1[1]+' '+u1[2]+' '+u1[3]+' '+u1[4]+' '+u1[5]+' '+u1[6])
 
-'''
 file3=open('hek.sam','r') #### Provide input sam file
-#file3=open('Hela_align_1.sam','r') #### Provide input sam file
 for u in file3:
     #print(u)
     u1=u.split( )
