@@ -40,4 +40,4 @@ Where the penguin tool needs the following two inputs files when running it:
 # Note:
 - The user should enter the bed file name with the absolute path and extension 
 
-- The user should include the fast5 files folder from which reads.fastq file was generated in the same path of main.py
+- The user should include the fast5 files folder (fast5_files) from which reads.fastq file was generated in the same path of main.py
