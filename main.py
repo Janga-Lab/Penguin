@@ -37,8 +37,8 @@ subprocess.run(["samtools" ,"sort", "hek.bam", "-o", "hek.sorted.bam"]) #samtool
 subprocess.run(["samtools" ,"index", "hek.sorted.bam"]) #samtools index hela.sorted.bam
 subprocess.run(["samtools","quickcheck" ,"hek.sorted.bam"]) #$samtools quickcheck hela.sorted.bam
 subprocess.run(["nanopolish","eventalign" ,"--reads", "reads.fastq", "--bam", "hek.sorted.bam","--genome", "ref.fa", "--scale-events"], stdout=f3) #$nanopolish eventalign  --reads reads.fastq --bam  hela.sorted.bam  --genome ref.fa --scale-events > hela-reads-ref.eventalign.txt
-subprocess.run(["python","flash_m5c_coors.py"])
-subprocess.run(["python","SVM_onehot.py",])
+subprocess.run(["python","gen_coors.py"])
+subprocess.run(["python","SVM.py",])
 
 
 
